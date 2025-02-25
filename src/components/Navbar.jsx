@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import { styles } from "../styles";
 import { logo, menu, close } from "../assets";
 
-const Navbar = () => {
+const Navbar = ({ onNavLinkClick, activePage }) => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Define new navigation links
-  const newNavLinks = [
+  // Define navigation links
+  const navLinks = [
     { id: "home", title: "Home" },
     { id: "education", title: "Education" },
     { id: "projects", title: "Projects" },
@@ -32,6 +32,14 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Update active state when activePage changes
+  useEffect(() => {
+    const activeLink = navLinks.find(link => link.id === activePage);
+    if (activeLink) {
+      setActive(activeLink.title);
+    }
+  }, [activePage]);
+
   return (
     <nav
       className={`${
@@ -47,6 +55,7 @@ const Navbar = () => {
           onClick={() => {
             setActive("");
             window.scrollTo(0, 0);
+            onNavLinkClick("home");
           }}
         >
           <img src={logo} alt='logo' className='w-9 h-9 object-contain' />
@@ -57,15 +66,18 @@ const Navbar = () => {
         </Link>
 
         <ul className='list-none hidden sm:flex flex-row gap-10'>
-          {newNavLinks.map((nav) => (
+          {navLinks.map((nav) => (
             <li
               key={nav.id}
               className={`${
                 active === nav.title ? "text-white" : "text-secondary"
               } hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive(nav.title)}
+              onClick={() => {
+                setActive(nav.title);
+                onNavLinkClick(nav.id);
+              }}
             >
-              <a href={`#${nav.id}`}>{nav.title}</a>
+              <span>{nav.title}</span>
             </li>
           ))}
         </ul>
@@ -84,7 +96,7 @@ const Navbar = () => {
             } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
           >
             <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
-              {newNavLinks.map((nav) => (
+              {navLinks.map((nav) => (
                 <li
                   key={nav.id}
                   className={`font-poppins font-medium cursor-pointer text-[16px] ${
@@ -93,9 +105,10 @@ const Navbar = () => {
                   onClick={() => {
                     setToggle(!toggle);
                     setActive(nav.title);
+                    onNavLinkClick(nav.id);
                   }}
                 >
-                  <a href={`#${nav.id}`}>{nav.title}</a>
+                  <span>{nav.title}</span>
                 </li>
               ))}
             </ul>
