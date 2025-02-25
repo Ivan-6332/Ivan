@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
-import { EarthCanvas } from "./canvas";
+import { EarthCanvas, StarsCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 
@@ -31,70 +31,77 @@ const BitbucketIcon = () => (
 const Contact = () => {
   // Replace these with your actual information
   const personalInfo = {
-    name: "Your Name",
-    title: "Software Developer",
-    description: "I'm a passionate software developer focused on creating elegant, efficient solutions. With expertise in React, Node.js, and cloud technologies, I build responsive web applications that deliver exceptional user experiences.",
+    name: "Ivan De Zoysa",
+    title: "FullStack Developer",
+    description: "I'm a passionate FullStack developer focused on creating elegant, efficient solutions. With expertise in React, Node.js, and cloud technologies, I build responsive web applications that deliver exceptional user experiences.",
     linkedin: "https://linkedin.com/in/yourprofile",
     github: "https://github.com/yourusername",
     bitbucket: "https://bitbucket.org/yourusername"
   };
 
   return (
-    <div className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}>
-      <motion.div
-        variants={slideIn("left", "tween", 0.2, 1)}
-        className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
-      >
-        <h1 className={`${styles.sectionHeadText} text-white`}>
-          {personalInfo.name}
-        </h1>
-        <h2 className={`${styles.sectionSubText} mb-4`}>
-          {personalInfo.title}
-        </h2>
-        
-        <p className="text-white-100 text-lg mb-8">
-          {personalInfo.description}
-        </p>
-        
-        <div className="flex flex-wrap gap-6 items-center">
-          <a 
-            href={personalInfo.linkedin} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-tertiary py-3 px-6 rounded-xl text-white font-bold shadow-md shadow-primary hover:bg-primary transition-colors duration-300"
-          >
-            <LinkedInIcon />
-            LinkedIn
-          </a>
+    <div className="relative w-full h-auto">
+      {/* Stars background */}
+      <div className="absolute inset-0 z-0">
+        <StarsCanvas />
+      </div>
+      
+      <div className={`relative z-10 xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}>
+        <motion.div
+          variants={slideIn("left", "tween", 0.2, 1)}
+          className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
+        >
+          <h1 className={`${styles.sectionHeadText} text-white`}>
+            {personalInfo.name}
+          </h1>
+          <h2 className={`${styles.sectionSubText} mb-4`}>
+            {personalInfo.title}
+          </h2>
           
-          <a 
-            href={personalInfo.github} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-tertiary py-3 px-6 rounded-xl text-white font-bold shadow-md shadow-primary hover:bg-primary transition-colors duration-300"
-          >
-            <GitHubIcon />
-            GitHub
-          </a>
+          <p className="text-white-100 text-lg mb-8">
+            {personalInfo.description}
+          </p>
           
-          <a 
-            href={personalInfo.bitbucket} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-tertiary py-3 px-6 rounded-xl text-white font-bold shadow-md shadow-primary hover:bg-primary transition-colors duration-300"
-          >
-            <BitbucketIcon />
-            Bitbucket
-          </a>
-        </div>
-      </motion.div>
+          <div className="flex flex-wrap gap-6 items-center">
+            <a 
+              href={personalInfo.linkedin} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-tertiary py-3 px-6 rounded-xl text-white font-bold shadow-md shadow-primary hover:bg-primary transition-colors duration-300"
+            >
+              <LinkedInIcon />
+              LinkedIn
+            </a>
+            
+            <a 
+              href={personalInfo.github} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-tertiary py-3 px-6 rounded-xl text-white font-bold shadow-md shadow-primary hover:bg-primary transition-colors duration-300"
+            >
+              <GitHubIcon />
+              GitHub
+            </a>
+            
+            <a 
+              href={personalInfo.bitbucket} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-tertiary py-3 px-6 rounded-xl text-white font-bold shadow-md shadow-primary hover:bg-primary transition-colors duration-300"
+            >
+              <BitbucketIcon />
+              Bitbucket
+            </a>
+          </div>
+        </motion.div>
 
-      <motion.div
-        variants={slideIn("right", "tween", 0.2, 1)}
-        className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
-      >
-        <EarthCanvas />
-      </motion.div>
+        <motion.div
+          variants={slideIn("right", "tween", 0.2, 1)}
+          className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
+        >
+          <EarthCanvas />
+        </motion.div>
+      </div>
     </div>
   );
 };
