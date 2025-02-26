@@ -14,7 +14,7 @@ const Navbar = ({ onNavLinkClick, activePage }) => {
     { id: "home", title: "Home" },
     { id: "education", title: "Education" },
     { id: "projects", title: "Projects" },
-    { id: "contact", title: "Contact" }
+    { id: "contact", title: "Reach Me" } 
   ];
 
   useEffect(() => {
