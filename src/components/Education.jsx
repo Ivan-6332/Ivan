@@ -27,13 +27,13 @@ const Education = () => {
       institution: "Dharmashoka College",
       degree: "Grade 1 - 13",
       date: "2008 - 2021",
-      description: "Done my school education"
+      description: "Done my school education Including GCE O/L and A/L exams. Participated in various extracurricular activities and sports."
     },
     {
       institution: "IIT-Sri Lanka",
       degree: "BSc. in Computer Science",
       date: "2024 - 2027",
-      description: "Focused on computer science and mathematics. Participated in national programming competitions and led the school's tech club."
+      description: "Currently following the degree program in Computer Science. Learning various programming languages and software development concepts."
     }
   ];
 
@@ -54,8 +54,7 @@ const Education = () => {
       </h2>
       
       <p className="text-white-100 text-lg mb-6">
-        My educational background has equipped me with both theoretical knowledge
-        and practical skills in computer science and software development.
+        Here are the details of my academic journey from school to university.
       </p>
 
       {/* Displaying education cards in a straight line on larger screens */}

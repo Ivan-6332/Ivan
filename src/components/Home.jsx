@@ -14,7 +14,7 @@ const Home = () => {
   const socialLinks = [
     {
       name: "GitHub",
-      url: "https://github.com/yourusername",
+      url: "https://github.com/Ivan-6332",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@ const Home = () => {
     },
     {
       name: "LinkedIn",
-      url: "https://linkedin.com/in/yourprofile",
+      url: "https://www.linkedin.com/in/ivan-de-zoysa-28640b338/",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -53,8 +53,8 @@ const Home = () => {
       ),
     },
     {
-      name: "Bitbucket",
-      url: "https://bitbucket.org/yourusername",
+      name: "Email",
+      url: "mailto:ivanakalanka@gmail.com",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -67,8 +67,8 @@ const Home = () => {
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <path d="M3.03 8.73c-.29 0-.51.24-.47.51l2.54 15.47c.06.35.38.6.74.6h12.4c.27 0 .5-.19.55-.45l2.54-15.62c.04-.27-.18-.51-.47-.51H3.03z"></path>
-          <path d="M14.22 15.95H9.78L8.5 10.14h6.94l-1.22 5.81z"></path>
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
         </svg>
       ),
     },
@@ -81,10 +81,8 @@ const Home = () => {
       transition={{ duration: 1 }}
       className="w-screen h-screen flex justify-center items-center relative overflow-hidden bg-transparent"
     >
-      {/* Transparent blurred background */}
       <div className="absolute inset-0 backdrop-blur-3xl"></div>
 
-      {/* Foreground content */}
       <motion.div
         initial={{ width: "50%", height: "60%" }}
         animate={{
@@ -98,7 +96,6 @@ const Home = () => {
         }}
         className="relative rounded-lg overflow-hidden shadow-2xl z-10"
       >
-        {/* Profile Image (Clicking this toggles details zoom) */}
         <motion.img
           src={imageUrl}
           alt="Ivan"
@@ -108,7 +105,6 @@ const Home = () => {
           onClick={toggleSize}
         />
 
-        {/* Details Section (Zooms in when clicked) */}
         {isExpanded && (
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -116,19 +112,24 @@ const Home = () => {
             transition={{ duration: 0.5 }}
             className="absolute inset-0 flex flex-col justify-center items-center bg-black-100 p-6 rounded-2xl pointer-events-auto border-2 border-tertiary"
           >
-            <h1 className={`${styles.sectionHeadText} text-white`}>Ivan De Zoysa</h1>
+            <h2 className={`${styles.sectionSubText} text-secondary mb-2`}>
+              Hello I'm
+            </h2>
+            <h1 className={`${styles.sectionHeadText} text-white`}>
+              Ivan De Zoysa
+            </h1>
 
             <h2 className={`${styles.sectionSubText} mb-3`}>
               Full Stack Developer
             </h2>
 
+            <div className="mb-3"></div> {/* Added extra space */}
+
             <p className="text-white-100 text-lg text-center mb-6">
-              Passionate about building scalable web applications and
-              continuously learning new technologies. Specializing in React,
-              Node.js, and cloud computing.
+              Passionate about building scalable Mobile Applications and web applications.
+              Specializing in React, Flutter, Node.js, Next.js, and Tailwind CSS.
             </p>
 
-            {/* Social Links */}
             <div className="flex space-x-4 mt-4">
               {socialLinks.map((link, index) => (
                 <a
