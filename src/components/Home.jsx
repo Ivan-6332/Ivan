@@ -1,10 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { styles } from "../styles"; // Importing styles from Education page
 
 const Home = () => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const imageUrl = "/My-Portfolio/Ivan-Ivan.jpg"; // Path from the 'public' folder
+
+  // Check if device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Initial check
+    checkMobile();
+    
+    // Add event listener for window resize
+    window.addEventListener("resize", checkMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const toggleSize = () => {
     setIsExpanded(!isExpanded);
@@ -86,8 +103,8 @@ const Home = () => {
       <motion.div
         initial={{ width: "50%", height: "60%" }}
         animate={{
-          width: isExpanded ? "80%" : "50%",
-          height: isExpanded ? "85%" : "60%",
+          width: isExpanded ? (isMobile ? "95%" : "80%") : (isMobile ? "90%" : "50%"),
+          height: isExpanded ? (isMobile ? "75%" : "85%") : (isMobile ? "50%" : "60%"),
         }}
         transition={{
           type: "spring",
@@ -100,7 +117,7 @@ const Home = () => {
           src={imageUrl}
           alt="Ivan"
           className="w-full h-full object-cover cursor-pointer"
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: isMobile ? 1.02 : 1.05 }}
           transition={{ duration: 0.3 }}
           onClick={toggleSize}
         />
@@ -112,14 +129,14 @@ const Home = () => {
             transition={{ duration: 0.5 }}
             className="absolute inset-0 flex flex-col justify-center items-center bg-black-100 p-6 rounded-2xl pointer-events-auto border-2 border-tertiary"
           >
-            <h2 className={`${styles.sectionSubText} text-secondary mb-2`}>
+            <h2 className={`${styles.sectionSubText} text-secondary mb-2 text-center`}>
               Hello I'm
             </h2>
-            <h1 className={`${styles.sectionHeadText} text-white`}>
+            <h1 className={`${styles.sectionHeadText} text-white text-center`}>
               Ivan De Zoysa
             </h1>
 
-            <h2 className={`${styles.sectionSubText} mb-3`}>
+            <h2 className={`${styles.sectionSubText} mb-3 text-center`}>
               Full Stack Developer
             </h2>
 

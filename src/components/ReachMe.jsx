@@ -32,6 +32,11 @@ const ReachMe = () => {
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
         <path d="M2.65 3C2.3 3 2 3.3 2 3.65v.07l2.73 16.7c.07.41.43.73.85.73h13.05c.31 0 .59-.22.64-.53l2.73-16.88v-.09c0-.35-.3-.65-.65-.65zm13.49 12.61h-6.15l-1.27-6.57h8.35z" />
       </svg>
+    ),
+    download: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 mr-2">
+        <path fillRule="evenodd" d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z" clipRule="evenodd" />
+      </svg>
     )
   };
 
@@ -59,6 +64,9 @@ const ReachMe = () => {
       transition: { duration: 0.3 }
     }
   };
+
+  // CV download path - adjust this based on your GitHub Pages structure
+  const cvPath = "/My-Portfolio/Ivan_DeZoysa_CV.pdf";
 
   return (
     <motion.div
@@ -111,6 +119,26 @@ const ReachMe = () => {
             </div>
           </motion.div>
         ))}
+      </motion.div>
+
+      {/* CV Download Button */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, duration: 0.5 }}
+        className="mt-6 flex justify-center w-full"
+      >
+        <a
+          href={cvPath}
+          download="Ivan_DeZoysa_CV.pdf"
+          className="group relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-medium text-white rounded-lg bg-tertiary shadow-md transition-all duration-300 ease-in-out hover:bg-white hover:text-tertiary hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tertiary"
+        >
+          <span className="flex items-center">
+            {icons.download}
+            <span className="font-semibold">Download CV</span>
+          </span>
+          <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-500 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+        </a>
       </motion.div>
 
       <motion.div
