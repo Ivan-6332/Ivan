@@ -4,7 +4,7 @@ import { styles } from "../styles"; // Importing styles from Education page
 
 const Home = () => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const imageUrl = "/Ivan-Ivan.jpg"; // Path from the 'public' folder
+  const imageUrl = "/My-Portfolio/Ivan-Ivan.jpg"; // Path from the 'public' folder
 
   const toggleSize = () => {
     setIsExpanded(!isExpanded);
