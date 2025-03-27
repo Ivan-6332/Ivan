@@ -73,7 +73,7 @@ const ReachMe = () => {
       initial={{ opacity: 0, x: -50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8 }}
-      className='w-full max-w-2xl bg-black-100 p-6 rounded-2xl pointer-events-auto border-2 border-tertiary'
+      className='w-full max-w-2xl p-6 rounded-2xl pointer-events-auto'
     >
       <h1 className={`${styles.sectionHeadText} text-white`}>
         Reach Me

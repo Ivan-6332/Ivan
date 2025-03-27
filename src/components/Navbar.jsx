@@ -9,12 +9,12 @@ const Navbar = ({ onNavLinkClick, activePage }) => {
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Define navigation links
+  // Define navigation links without titles
   const navLinks = [
-    { id: "home", title: "Home" },
-    { id: "education", title: "Education" },
-    { id: "projects", title: "Projects" },
-    { id: "contact", title: "Reach Me" } 
+    { id: "home" },
+    { id: "education" },
+    { id: "projects" },
+    { id: "contact" } 
   ];
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const Navbar = ({ onNavLinkClick, activePage }) => {
   useEffect(() => {
     const activeLink = navLinks.find(link => link.id === activePage);
     if (activeLink) {
-      setActive(activeLink.title);
+      setActive(activeLink.id);
     }
   }, [activePage]);
 
@@ -63,14 +63,14 @@ const Navbar = ({ onNavLinkClick, activePage }) => {
             <li
               key={nav.id}
               className={`${
-                active === nav.title ? "text-white" : "text-secondary"
+                active === nav.id ? "text-white" : "text-secondary"
               } hover:text-white text-[18px] font-medium cursor-pointer`}
               onClick={() => {
-                setActive(nav.title);
+                setActive(nav.id);
                 onNavLinkClick(nav.id);
               }}
             >
-              <span>{nav.title}</span>
+              <div className={`w-4 h-4 rounded-full ${active === nav.id ? 'bg-white' : 'bg-secondary'}`}></div>
             </li>
           ))}
         </ul>
@@ -93,15 +93,15 @@ const Navbar = ({ onNavLinkClick, activePage }) => {
                 <li
                   key={nav.id}
                   className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === nav.title ? "text-white" : "text-secondary"
+                    active === nav.id ? "text-white" : "text-secondary"
                   }`}
                   onClick={() => {
                     setToggle(!toggle);
-                    setActive(nav.title);
+                    setActive(nav.id);
                     onNavLinkClick(nav.id);
                   }}
                 >
-                  <span>{nav.title}</span>
+                  <div className={`w-4 h-4 rounded-full ${active === nav.id ? 'bg-white' : 'bg-secondary'}`}></div>
                 </li>
               ))}
             </ul>
