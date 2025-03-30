@@ -66,7 +66,7 @@ const ReachMe = () => {
   };
 
   // CV download path - adjust this based on your GitHub Pages structure
-  const cvPath = "/My-Portfolio/Ivan_DeZoysa_CV.pdf";
+  const cvPath = "/Ivan_DeZoysa_CV.pdf";
 
   return (
     <motion.div
