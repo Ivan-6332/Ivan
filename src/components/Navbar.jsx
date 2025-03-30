@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { FaHome, FaGraduationCap, FaLaptopCode, FaEnvelope } from "react-icons/fa";
 
 import { styles } from "../styles";
 import { logo, menu, close } from "../assets";
@@ -9,12 +10,12 @@ const Navbar = ({ onNavLinkClick, activePage }) => {
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Define navigation links without titles
+  // Define navigation links with titles and icons
   const navLinks = [
-    { id: "home" },
-    { id: "education" },
-    { id: "projects" },
-    { id: "contact" } 
+    { id: "home", icon: FaHome, title: "Home" },
+    { id: "education", icon: FaGraduationCap, title: "Education" },
+    { id: "projects", icon: FaLaptopCode, title: "Projects" },
+    { id: "contact", icon: FaEnvelope, title: "Reach Me" }
   ];
 
   useEffect(() => {
@@ -64,13 +65,22 @@ const Navbar = ({ onNavLinkClick, activePage }) => {
               key={nav.id}
               className={`${
                 active === nav.id ? "text-white" : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer`}
+              } hover:text-white text-[18px] font-medium cursor-pointer flex flex-col items-center gap-1 transition-all duration-300 ease-in-out`}
               onClick={() => {
                 setActive(nav.id);
                 onNavLinkClick(nav.id);
               }}
             >
-              <div className={`w-4 h-4 rounded-full ${active === nav.id ? 'bg-white' : 'bg-secondary'}`}></div>
+              <div className='flex flex-col items-center gap-1 group'>
+                <div className={`rounded-lg p-2 transition-transform duration-300 ${
+                  active === nav.id ? 'text-white scale-110' : 'text-secondary hover:scale-110'
+                }`}>
+                  <nav.icon size={20} className={`${active === nav.id ? 'animate-pulse' : ''}`} />
+                </div>
+                <span className={`text-sm transition-opacity duration-300 ${
+                  active === nav.id ? 'opacity-100' : 'opacity-70 group-hover:opacity-100'
+                }`}>{nav.title}</span>
+              </div>
             </li>
           ))}
         </ul>
@@ -94,14 +104,17 @@ const Navbar = ({ onNavLinkClick, activePage }) => {
                   key={nav.id}
                   className={`font-poppins font-medium cursor-pointer text-[16px] ${
                     active === nav.id ? "text-white" : "text-secondary"
-                  }`}
+                  } flex items-center gap-3`}
                   onClick={() => {
                     setToggle(!toggle);
                     setActive(nav.id);
                     onNavLinkClick(nav.id);
                   }}
                 >
-                  <div className={`w-4 h-4 rounded-full ${active === nav.id ? 'bg-white' : 'bg-secondary'}`}></div>
+                  <div className={`p-1 rounded-lg ${active === nav.id ? 'text-white' : 'text-secondary'}`}>
+                    <nav.icon size={16} />
+                  </div>
+                  <span>{nav.title}</span>
                 </li>
               ))}
             </ul>
