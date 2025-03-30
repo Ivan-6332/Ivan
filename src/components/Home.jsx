@@ -30,7 +30,7 @@ const Home = () => {
   const [showImage, setShowImage] = useState(true);
   const [countdown, setCountdown] = useState(3);
   const [blur, setBlur] = useState(0);
-  const imageUrl = "/My-Portfolio/Ivan-Ivan.jpg";
+  const imageUrl = "/Ivan-Ivan.jpg";
 
   const educationList = [
     {
